@@ -12,6 +12,7 @@ import {
 } from '../../types/llm/response'
 import { LLMProvider } from '../../types/provider.types'
 import { formatMessages } from '../../utils/llm/request'
+import { createObsidianFetch } from '../../utils/obsidian-fetch'
 
 import { BaseLLMProvider } from './base'
 import { DeepSeekMessageAdapter } from './deepseekMessageAdapter'
@@ -33,6 +34,7 @@ export class DeepSeekStudioProvider extends BaseLLMProvider<
         ? provider.baseUrl.replace(/\/+$/, '')
         : 'https://api.deepseek.com',
       dangerouslyAllowBrowser: true,
+      fetch: createObsidianFetch(),
     })
   }
 
